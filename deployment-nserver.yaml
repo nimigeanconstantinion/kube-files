@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: spring-boot-app
+  name: nserver-service
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: spring-boot-app
+      app: nserver-service
   template:
     metadata:
       labels:
-        app: spring-boot-app
+        app: nserver-service
     spec:
       containers:
-        - name: spring-boot-app
-          image: ion21/serv1:v16
+        - name: nserver-service
+          image: ion21/server-service:16.12.2024.20.44.21
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "kubernetes"
@@ -25,12 +25,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: spring-boot-service
+  name: nserver-service
   namespace: default
 spec:
   type: ClusterIP
   ports:
-    - port: 8083
-      targetPort: 8085
+    - port: 8080
+      targetPort: 8080
   selector:
-    app: spring-boot-app
+    app: nserver-service
