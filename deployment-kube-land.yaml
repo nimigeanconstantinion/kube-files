@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: security-app
+  name: kube-land
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: security-app
+      app: kube-land
   template:
     metadata:
       labels:
-        app: security-app
+        app: kube-land
     spec:
       containers:
-        - name: security-app
-          image: ion21/kube-security:v1
+        - name: kube-land
+          image: ion21/kube-land:v1
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: "kubernetes"
@@ -25,12 +25,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: security-app
+  name: kube-land
   namespace: default
 spec:
   type: ClusterIP
   ports:
-    - port: 8083
+    - port: 8082
       targetPort: 8082
   selector:
-    app: security-app
+    app: kube-land
