@@ -5,4 +5,4 @@ kubectl apply -f .\mysql-statefulset.yaml
 kubectl apply -f .\deployment-kube-land.yaml
 kubectl apply -f .\deployment-api.yaml
 kubectl apply -f .\deployment-client.yaml
-kubectl apply -f .\ingres.yaml
+kubectl apply -f .\ingress-v2.yaml
